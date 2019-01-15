@@ -432,7 +432,7 @@ class vault():
 
         
 
-    def list_directory(self, secret_dir_path, with_data=False, depth=1000):
+    def list_directory(self, secret_dir_path, with_data=False, depth=1000, silent_error=False):
         """
         This one lists every secret and for directory
         If flag with_data passed - it also prints every secret data
@@ -462,7 +462,8 @@ class vault():
                     depth=depth-1
             return reply
         else:
-            lgr.error("No such path!")
+            if not silent_error:
+                lgr.error("No such path!")
             return False
 
 
